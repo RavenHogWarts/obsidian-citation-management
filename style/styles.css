@@ -1,8 +1,265 @@
-/*
+.obsidian-citation-plugin {
+    /* 插件的全局样式 */
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+/* 输入容器 */
+.obsidian-citation-plugin .citation-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
-If your plugin does not need CSS, delete this file.
+/* 建议下拉框 */
+.obsidian-citation-plugin .citation-suggestions {
+    position: fixed;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100000;
+    max-height: 200px;
+    overflow-y: auto;
+}
 
-*/
+.obsidian-citation-plugin .citation-suggestion {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.obsidian-citation-plugin .citation-suggestion:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* 输入框 */
+.obsidian-citation-plugin .citation-input-container input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--background-modifier-border);
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+}
+
+/* 引用部分 */
+.obsidian-citation-plugin .citations-section {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.obsidian-citation-plugin .citations-header {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: var(--background-secondary);
+    border-radius: 4px 4px 0 0;
+}
+
+.obsidian-citation-plugin .citations-header:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* 折叠图标 */
+.obsidian-citation-plugin .collapse-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.obsidian-citation-plugin .collapse-icon::before {
+    content: "▼";
+    font-size: 12px;
+    transition: transform 0.15s ease;
+}
+
+.obsidian-citation-plugin .collapse-icon.collapsed::before {
+    transform: rotate(-90deg);
+}
+
+/* 引用列表 */
+.obsidian-citation-plugin .citations-list {
+    padding: 8px;
+}
+
+.obsidian-citation-plugin .citation-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--text-normal);
+}
+
+.obsidian-citation-plugin .citation-item:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* 历史记录部分 */
+.obsidian-citation-plugin .history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.obsidian-citation-plugin .history-header h3 {
+    margin: 0;
+    color: var(--text-normal);
+}
+
+.obsidian-citation-plugin .history-header .setting-item {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.obsidian-citation-plugin .history-header .setting-item-control {
+    padding: 0;
+    margin: 0;
+}
+
+/* 设置面板 */
+.obsidian-citation-plugin .citation-settings {
+    padding: 16px 24px;
+}
+
+.obsidian-citation-plugin .citation-settings h2 {
+    margin: 0 0 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--background-modifier-border);
+    color: var(--text-normal);
+    font-size: 1.5em;
+}
+
+.obsidian-citation-plugin .citation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24px 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.obsidian-citation-plugin .citation-header h3 {
+    margin: 0;
+    color: var(--text-normal);
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+/* 添加引用区域 */
+.obsidian-citation-plugin .add-citation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--background-secondary);
+    border-radius: 8px;
+}
+
+.obsidian-citation-plugin .add-citation input {
+    flex: 1;
+    padding: 8px 12px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-normal);
+    font-size: 14px;
+}
+
+.obsidian-citation-plugin .add-citation input:focus {
+    border-color: var(--interactive-accent);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb), 0.2);
+}
+
+/* 按钮样式 */
+.obsidian-citation-plugin .citation-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.obsidian-citation-plugin .citation-btn:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+.obsidian-citation-plugin .citation-delete-btn {
+    background-color: var(--background-modifier-error);
+    color: var(--text-on-accent);
+}
+
+.obsidian-citation-plugin .citation-delete-btn:hover {
+    background-color: var(--background-modifier-error-hover);
+}
+
+/* 引用列表 */
+.obsidian-citation-plugin .citation-list {
+    margin-top: 12px;
+}
+
+.obsidian-citation-plugin .citation-list .setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: var(--background-secondary);
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.obsidian-citation-plugin .citation-list .setting-item:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+.obsidian-citation-plugin .citation-list .setting-item-name {
+    flex: 1;
+    color: var(--text-normal);
+    font-size: 14px;
+    margin-right: 12px;
+}
+
+.obsidian-citation-plugin .citation-list .setting-item-control {
+    display: flex;
+    gap: 8px;
+}
+
+/* 空状态提示 */
+.obsidian-citation-plugin .empty-state {
+    padding: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    background: var(--background-secondary);
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+/* 滚动条美化 */
+.obsidian-citation-plugin .citation-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.obsidian-citation-plugin .citation-list::-webkit-scrollbar-track {
+    background: var(--background-primary);
+    border-radius: 4px;
+}
+
+.obsidian-citation-plugin .citation-list::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: 4px;
+}
+
+.obsidian-citation-plugin .citation-list::-webkit-scrollbar-thumb:hover {
+    background: var(--background-modifier-border-hover);
+}
