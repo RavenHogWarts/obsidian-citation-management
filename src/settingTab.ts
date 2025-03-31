@@ -19,7 +19,8 @@ export class CitationSettingTab extends PluginSettingTab {
         containerEl.addClass('obsidian-citation-plugin-settings');
         containerEl.createEl('h2', {text: '引用管理设置'});
 
-        new Setting(containerEl)
+        const historyEl = containerEl.createEl('div', { cls: 'historyLimit' });
+        new Setting(historyEl)
             .setName('历史记录数量限制')
             .setDesc('设置要保存的最大历史记录数量')
             .addText(text => text
@@ -37,7 +38,8 @@ export class CitationSettingTab extends PluginSettingTab {
                 }));
 
         // 添加新引用的输入框
-        new Setting(containerEl)
+        const citationEl = containerEl.createEl('div', { cls: 'newCitation' });
+        new Setting(citationEl)
             .setName('添加新引用')
             .setDesc('输入新的引用并点击添加')
             .addText(text => text
@@ -48,7 +50,7 @@ export class CitationSettingTab extends PluginSettingTab {
             .addButton(button => button
                 .setButtonText('添加')
                 .onClick(async () => {
-                    const input = containerEl.querySelector('input');
+                    const input = citationEl.querySelector('input');
                     if (input && input.value) {
                         const citation = createCitation(
                             input.value,
